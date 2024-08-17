@@ -1,0 +1,10 @@
+gcc  test.c wal.c op_queue.c page_queue.c block_queue.c utils/io_uring.c -I. -I./include -include include/global.h -luring -lz -o wal_test -O3 -g
+gcc  test.c wal.c op_queue.c page_queue.c block_queue.c utils/io_uring.c -I. -I./include -include include/global.h -luring -lz -o wal_test -O3 -g -finstrument-functions
+
+
+readelf -sW wal_test | awk '$4 == "FUNC" {print $2, $8}' > map
+./wal_test > x.log
+cc x.c
+./a.out >> xx.log
+sort -n -k5 xx.log > xxs.log
+
