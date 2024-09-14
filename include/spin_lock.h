@@ -12,4 +12,5 @@ static void spin_unlock(spinlock_t *lock) {
 static void spin_lock_init(spinlock_t *lock) {
     pthread_mutex_init(lock, NULL);
 }
+#define SPIN_LOCK_INITIALIZER PTHREAD_MUTEX_INITIALIZER
 #endif
